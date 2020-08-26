@@ -1,0 +1,6 @@
+﻿Installl EF, icrosoft.EntityFrameworkCore.SqlServer and its tools
+
+	Install-Package Microsoft.EntityFrameworkCore.Tools
+
+scaffold the entity framework with:
+	Scaffold-DbContext "Server=.\SQLExpress;Database=SmartAutos;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database

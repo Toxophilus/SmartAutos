@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Smart Autos management portal.</p>
+</div>
+
+<div class="container-fluid">
+
+    <h2>Current Vehicles</h2>
+    @model IEnumerable<SmartAutos.Models.VehicleListViewModel>
+    @if (Model.Count() == 0)
+    {
+        <h4>No Vehicles Available</h4>
+    }
+    else
+    {
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Engine Size</th>
+                    <th>Colour</th>
+                    <th>Milage</th>
+                    <th>Registration</th>
+                </tr>
+            </thead>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(i => v.Id)</td>
+                    <td>@Html.DisplayFor(i => v.Manufacturer)</td>
+                    <td>@Html.DisplayFor(i => v.Model)</td>
+                    <td>@Html.DisplayFor(i => v.EngineSize)</td>
+                    <td>@Html.DisplayFor(i => v.Colour)</td>
+                    <td>@Html.DisplayFor(i => v.Milage)</td>
+                    <td>@Html.DisplayFor(i => v.Registration)</td>
+                    <td>@Html.ActionLink("Edit", "EditVehicle", "", new { id = v.Id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteVehicle", "", new { id = v.Id })</td>
+                </tr>
+            }
+        </table>
+    }
+
+    <br />
+    <a class="btn btn-default" href="/Home/AddVehicle">Add a new vehicle &raquo;</a>
+</div>
